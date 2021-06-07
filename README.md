@@ -120,47 +120,11 @@ The best model saved during training resulted in a validation loss of 0.9591 and
 <h2>IX. FURTHER IMPLEMENTATIONS</h2>
 It is evident that one of our biggest obstacles during the COVID-19 pandemic is to make sure people follow the safety regulations especially in public places for his/her own safety and the safety of others around. Our DeepFaceMask model will thus detect if people are wearing masks or not, correctly, when deployed to the CCTVs in the public places and can alert the admin as and when people are not wearing masks or wearing masks incorrectly. Additionally, it can be used in head pose estimation, attention detection in classrooms and lectures on masked faces, drowsiness detection on masked faces using facial keypoints tracking the driver’s eyes, and so on. 
 
-<h2>X. REFERENCES</h2>  
-[1] P. Viola and M. J. Jones, "Robust real-time face detection", Int. J. Comput. Vision, vol. 57, no. 2, pp. 137-154, May 2004. 
-[2] Z. A. Memish, A. I. Zumla, R. F. Al-Hakeem, A. A. Al-Rabeeah, and G. M. Stephens, “Family cluster of middle east respiratory syndrome coronavirus infections,” New England Journal of Medicine, vol. 368, no. 26, pp. 2487–2494, 2013. 
-[3] T.-Y. Lin, P. Goyal, R. Girshick, K. He, and P. Dollár, “Focal loss for dense object detection,” 2017.
- [4] A. Shrivastava, A. Gupta, and R. Girshick, “Training region-based object detectors with online hard example mining,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 761–769.
-[5] S. Ge, J. Li, Q. Ye, and Z. Luo, “Detecting masked faces in the wild with lle-cnns,” in Proceedings of the IEEE.
-
-[6] A. Paszke, S. Gross, F. Massa, A. Lerer, J. Bradbury, G.Chanan, T. Killeen, Z. Lin, N. Gimelshein, L. Antiga et al.,“Pytorch: An imperative style, high-performance deep learning library,” in Advances in Neural Information Processing Systems, 2019, pp. 8024–8035.
-[7] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual
-learning for image recognition,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 770–778
-[8] A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W.Wang, T. Weyand, M. Andreetto, and H. Adam,
-“Mobilenets: Efficient convolutional neural networks for mobile vision applications,” arXiv preprint arXiv:1704.04861, 2017.
-[9] J. Deng, J. Guo, Y. Zhou, J. Yu, I. Kotsia, and
-S.Zafeiriou, “Retinaface: Single-stage dense face localization in the wild,” arXiv preprint arXiv:1905.00641, 2019.
-[10] R. Girshick, J. Donahue, T. Darrell, and J. Malik, “Rich feature hierarchies for accurate object detection and semantic segmentation,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2014, pp. 580–587.
-[11] Krizhevsky A, Sutskever I, Hinton GE (2012)
-ImageNet classification with deep convolutional neural
-networks. Adv Neural Inf Process Syst 25.
-[12] S. Yang, P. Luo, C.-C. Loy, and X. Tang, “Wider face:A face detection benchmark,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 5525–5533.
-[13] R. Girshick, “Fast r-cnn,” in Proceedings of the IEEE international conference on computer vision, 2015, pp.1440–1448.
-[14] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L.
-Fei-Fei, “Imagenet: A large-scale hierarchical image
-database,” in 2009 IEEE conference on computer vision and pattern recognition. Ieee, 2009, pp. 248–255.
-[15] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only look once: Unified, real-time object detection,” in Proceedings of the IEEE conference on computer vision, 2016, pp. 779–788.
-[16] A. Krizhevsky, I. Sutskever and G. E. Hinton,
-"Imagenet classification with deep convolutional neural
-networks", Advances in Neural Information Processing
-Systems 25, pp. 1097-1105, 2012.
-[17] K. Simonyan and A. Zisserman, "Very deep convolutional networks for large-scale image recognition",CoRR, 2014.
-[18] C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D.
-Anguelov, et al., "Going deeper with convolutions", 2015.
-[19] K. He, X. Zhang, S. Ren and J. Sun, "Deep residual
-learning for image recognition", 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
-[20] P. Viola and M. J. Jones, "Robust real-time face
-detection", Int. J. Comput. Vision, vol. 57, no. 2, pp.
-137-154, May 2004
-
 
 
 <h1>Detailed Analysis </h1>
-Table of Contents
+<br>
+<h2>Table of Contents</h2>
 
 
 S.No	Particulars	Page No
@@ -173,14 +137,10 @@ S.No	Particulars	Page No
 7	Conclusion	11
 8	References	12
 
-Introduction
+<h2>Introduction</h2>
 
-Deep Learning
+<h3>Deep Learning<h3>
  Deep is an immensely increasing subset of Machine Learning, which tries to mimic the multiple parts of the human brain that sends signals to recognize stuff or making a conclusion based on sensor data, whereas in deep learning the models are trained to perform a specific task in certain way based on the models including multiple different layers working over different logical units on human brain over mathematical computation. A neural network takes in inputs, which are then processed in hidden layers using weights that are adjusted during training. Then the model spits out a prediction.
-
-
-
-
 
 
 A single layer without any activation function is considered nothing more than a linear model of Machine Learning Algorithms, these activation are introduced to add more irregularity to input values for making it as far as possible from the Linear Models for better learning processes
@@ -191,7 +151,7 @@ A Convolutional Neural Network is a Deep Learning algorithm which can take in an
 Working mechanism for CNN.
 
 
-Application of CNN
+<h2>Application of CNN</h2>
 
 1. Object Detection
 The face detection technique used here is MTCNN
@@ -243,42 +203,6 @@ Here we tried face detection using two networks :
 ●This network worked best in this case . It uses non max suppression behind the scenes and this predicts the most accurate bounding box.
 
 ●It gave 7 fps on CPU inference and using this did not make the cpu reach its bottleneck.
-
-
-
-Visual representation of three architectures that are stack on top of each other to form MTCNN :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Samples of face detection using MTCNN :
-
-
-
-Multiple face detection using MTCNN:
-
-
-
-
-
-
-
-
-
 
 
 2. Image Classification
@@ -370,7 +294,7 @@ class state(nn.Module):
 This gave an accuracy of 98% thus outperforming the state of the art model . 
 ResNet-50 is a convolutional neural network that is 50 layers deep. You can load a pre-trained version of the network trained on more than a million images from the ImageNet database . The pretrained network can classify images into 1000 object categories, such as keyboard, mouse, pencil, and many animals. As a result, the network has learned rich feature representations for a wide range of images. The network has an image input size of 224-by-224.
 we also tried variants of resnet :
-Resnet-18 and resnet-34: the former consists of 18 layers and the latter has 34 layers . Having less layers with respect to imbalance and small data resulted in underfitting and inaccurate reaktime inference .
+Resnet-18 and resnet-34: the former consists of 18 layers and the latter has 34 layers . Having less layers with respect to imbalance and small data resulted in underfitting and inaccurate realtime inference .
 Resnet-101 and resnet 152 : The former consist of 101 layers and the layer consists of 152 layers. The networks were too deep for a small dataset and we experienced a little gradient diminishing problem and at some time the models were stuck at local minima and the loss was not decreasing anymore .We got an outstanding accuracy on train data but it was surely overfilled as it performed worse of validation data / real time inference.
 
 Resnet-50 : This was the best architecture which was quite balanced and well suited for the dataset .It also tackled the gradient diminishing problem smoothly when compared to all its variants.
@@ -408,22 +332,14 @@ This task was done using OpenCV solvepnp function by giving the camera calibrati
 For facial keypoints or face landmarks we used MTCNN in case of unmasked face , where we got 5 facial keypoints . In total we need six facial keypoints to predict the pose or face alignment , so we used another pretrained network known as face-alignment which uses DLib under the hood to predict a total of 64 facial keypoints . From that 64 key points we took one keypoint representing the lower part of the face and added it to the MTCNN key points array ,  thus we got 6 facial keypoints .
 In the case of the masked face  ,  the prediction was having large errors with respect to the ground truth as the face is hidden under the mask . So ,  it was the better option to predict as much less facial keypoints for the face as possible to avoid large summation of errors.S , in this case we used MTCNN as the main  keypoint predictor . Now, we got the 5 facial keypoints and left with a missing keypoint which represent the chin area .Here we used a small trick by calculating the midpoint using two key points on either side of the lips  and translating it down to negative x axis by some constant value .This is not the ideal solution but in case of masked faces it world quite well . There is much room for improvement but still we were able to predict pose on masked faces using only 5 key points up to some extent .
 
-
-Facial keypoints prediction :
-
-
-Head Pose estimation from facial keypoints :
-
-Requirements, feasibility and Scope
-
-Required Tools
+<h2>Required Tools</h2>
 ●Python
 ●Pytorch API
 ●OpenCV
 ●Jupyter Notebook
 ●Dlib
 
-Feasibility Study and Scope
+<h2>Feasibility Study and Scope</h2>
 A real life solution that can be performed by computer vision can be face attention  and drowsiness detection . In this pandemic , it's difficult to perform such tasks while the person is wearing a mask . So we have to apply a two step process instead of one step process . The problem statement is that , we have to detect whether a person is attentive while driving or is he feeling drowsy , so a proper warning should be displayed to avoid any accidents. The main problem is that earlier various models have been made but they were made to work on unmasked faces . 
 
 So ,the approach should be as follows :
@@ -438,9 +354,7 @@ The second model will have the responsibility of predicting the facial landmarks
 MODEL 3:
 The third model will be used to predict the face alignment angle or face pose estimation for the key points obtained from the above model . This is the most challenging task as many techniques come into play such as camera calibration , 2-dimension to 3-dimension points conversion and 3d pose estimation.
 
-Implementation and Testing
-
-Implementation Modules
+<h2>Distribution of Modules</h2>
 
 I.Image Detection.py 
 Face detection is one of the important tasks of object detection. Typically detection is the first stage of pattern recognition and identity authentication. In recent years, deep learning-based algorithms in object detection have grown rapidly. These algorithms can be generally divided into two categories, i.e., two-stage detector like Faster R-CNN and one-stage detector like MTCNN. Although MTCNN and its varieties are not so good as two-stage detectors in terms of accuracy, they outperform the counterparts by a large margin in speed. MTCNN performs well when facing normal size objects, but is incapable of detecting small objects. The accuracy decreases notably when dealing with objects that have large-scale changing like faces. Aimed to solve the detection problem of varying face scales, we propose a face detector named MTCNN-face based on MTCNNv3 to improve the performance for face detection. The present approach includes using anchor boxes more appropriate for face detection and a more precise regression loss function. The improved detector significantly increased accuracy while remaining fast detection speed. Experiments on the WIDER FACE and the FDDB datasets show that our improved algorithm outperforms MTCNN and its varieties.
@@ -450,14 +364,14 @@ II.Image Classification.py
 Image classification is a complex process that may be affected by many factors. Because classification results are the basis for many environmental and socioeconomic applications, scientists and practitioners have made great efforts in developing advanced classification approaches and techniques for improving classification accuracy. Image classification is used in a lot in basic fields like medicine, education and security. Correct classification has vital importance, especially in medicine. Therefore, improved methods are needed in this field. The proposed deep CNNs are an often-used architecture for deep learning and have been widely used in computer vision and audio recognition. In the literature, different values of factors used for the CNNs are considered. From the results of the experiments on the CIFAR dataset, we argue that the network depth is of the first priority for improving the accuracy. It can not only improve the accuracy, but also achieve the same high accuracy with less complexity compared to increasing the network width.
 
 
-Modules Interaction
+<h2>Modules Interaction</h2>
 In order to classify a set of data into different classes or categories, the relationship between the data and the classes into which they are classified must be well understood. Generally, classification is done by a computer, so, to achieve classification by a computer, the computer must be trained. Sometimes it never gets sufficient accuracy with the results obtained, so training is a key to the success of classification. To improve the classification accuracy, inspired by the ImageNet challenge, the proposed work considers classification of multiple images into the different categories (classes) with more accuracy in classification, reduction in cost and in a shorter time by applying parallelism using a deep neural network model.
 
 The image classification problem requires determining the category (class) that an image belongs to. The problem is considerably complicated by the growth of categories' count, if several objects of different classes are present in the image and if the semantic class hierarchy is of interest, because an image can belong to several categories simultaneously. Fuzzy classes present another difficulty for probabilistic categories' assignment. Moreover, a combination of different classification approaches has shown to be helpful for the improvement of classification accuracy.
 In our case the classes will be masked or unmasked images of the detected images from the above module.
 
 
-Testing
+<h2>Testing</h2>
 
 Phase 1 testing:
 In the initial stages each modules will be tested individually with different distribution of data to obtain the best analysis of testing TensorBoard will be integrated into the testing command, this will provide the best graphical representation so to obtain a detailed views over the faults into the working is either due to parameter or due to poor data optimization.
@@ -468,8 +382,9 @@ This phase will allow us to measure the performance for individual models used i
 Phase 2 Testing:
 Under phase 2 of testing the final input data and output data is to be prepared to make a performance measure after the modules interaction with each other, this measurement will be supporting for fine interaction between the modules implemented and tested in phase 1, if this result out to be fine then final phase will be tested or models will be fine tuned or outputs will be engineered to build a better predictions through the model.
 
-Limitation and Future Scope.
-Limitations:
+<h2>Limitation and Future Scope</h2>
+ <br>
+<h4>Limitations:</h4>
 
 I.Large amounts of approaches have been proposed for face detection. The early research on face detection mainly focused on the design of handcraft feature and used traditional machine learning algorithms to train effective classifiers for detection and recognition. Such approaches are limited in that the efficient feature design is complex and the detection accuracy is relatively low, but the model MTCNN model is better in performance but the time factor for detection depends upon the area covered and the number of face detected individually and then individually running over two steps:
 1. Detection for masked faces.
@@ -479,7 +394,7 @@ Under multiple model processing it may sometimes takes high time if many peoples
 II.Datapoints detection could be erupted if two faces overlaps one another, in the image or if the camera angle is not good based on the data is trained over this could be due to different distribution encounter than the training dataset used for learning the model in different stages of the project.
 
 
-Future Scope
+<h4>Future Scope</h4>
 There are number of aspects we are planning to work on shortly:
 1.Current the model takes .32nsec to obtain a prediction over the speed of CPU. So, we could optimize the data size adding transfer learning to optimize the complexity of input data to the model and obtain a prediction better than before
 2.The use of Machine Learning in the field of IOT device development is rising rapidly. Hence, we plan to port our model to their respective version of tensorflow lite.
@@ -492,12 +407,48 @@ validation loss of 0.9591 and validation accuracy of
 the model resulted in 98% accuracy on the test data.
 
 
-
-
-Possible application areas where this Model can be deployed:
+<h2>Possible application areas where this Model can be deployed:</h2>
 1.Mall security checks
 2.Offices spaces
 3.Super market entrance
 4.Hospitals
 5.Schools and parks
 6.Mobile applications for alerts
+
+<h2>X. REFERENCES</h2>  
+[1] P. Viola and M. J. Jones, "Robust real-time face detection", Int. J. Comput. Vision, vol. 57, no. 2, pp. 137-154, May 2004. 
+[2] Z. A. Memish, A. I. Zumla, R. F. Al-Hakeem, A. A. Al-Rabeeah, and G. M. Stephens, “Family cluster of middle east respiratory syndrome coronavirus infections,” New England Journal of Medicine, vol. 368, no. 26, pp. 2487–2494, 2013. 
+[3] T.-Y. Lin, P. Goyal, R. Girshick, K. He, and P. Dollár, “Focal loss for dense object detection,” 2017.
+ [4] A. Shrivastava, A. Gupta, and R. Girshick, “Training region-based object detectors with online hard example mining,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 761–769.
+[5] S. Ge, J. Li, Q. Ye, and Z. Luo, “Detecting masked faces in the wild with lle-cnns,” in Proceedings of the IEEE.
+
+[6] A. Paszke, S. Gross, F. Massa, A. Lerer, J. Bradbury, G.Chanan, T. Killeen, Z. Lin, N. Gimelshein, L. Antiga et al.,“Pytorch: An imperative style, high-performance deep learning library,” in Advances in Neural Information Processing Systems, 2019, pp. 8024–8035.
+[7] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual
+learning for image recognition,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 770–778
+[8] A. G. Howard, M. Zhu, B. Chen, D. Kalenichenko, W.Wang, T. Weyand, M. Andreetto, and H. Adam,
+“Mobilenets: Efficient convolutional neural networks for mobile vision applications,” arXiv preprint arXiv:1704.04861, 2017.
+[9] J. Deng, J. Guo, Y. Zhou, J. Yu, I. Kotsia, and
+S.Zafeiriou, “Retinaface: Single-stage dense face localization in the wild,” arXiv preprint arXiv:1905.00641, 2019.
+[10] R. Girshick, J. Donahue, T. Darrell, and J. Malik, “Rich feature hierarchies for accurate object detection and semantic segmentation,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2014, pp. 580–587.
+[11] Krizhevsky A, Sutskever I, Hinton GE (2012)
+ImageNet classification with deep convolutional neural
+networks. Adv Neural Inf Process Syst 25.
+[12] S. Yang, P. Luo, C.-C. Loy, and X. Tang, “Wider face:A face detection benchmark,” in Proceedings of the IEEE conference on computer vision and pattern recognition, 2016, pp. 5525–5533.
+[13] R. Girshick, “Fast r-cnn,” in Proceedings of the IEEE international conference on computer vision, 2015, pp.1440–1448.
+[14] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L.
+Fei-Fei, “Imagenet: A large-scale hierarchical image
+database,” in 2009 IEEE conference on computer vision and pattern recognition. Ieee, 2009, pp. 248–255.
+[15] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only look once: Unified, real-time object detection,” in Proceedings of the IEEE conference on computer vision, 2016, pp. 779–788.
+[16] A. Krizhevsky, I. Sutskever and G. E. Hinton,
+"Imagenet classification with deep convolutional neural
+networks", Advances in Neural Information Processing
+Systems 25, pp. 1097-1105, 2012.
+[17] K. Simonyan and A. Zisserman, "Very deep convolutional networks for large-scale image recognition",CoRR, 2014.
+[18] C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D.
+Anguelov, et al., "Going deeper with convolutions", 2015.
+[19] K. He, X. Zhang, S. Ren and J. Sun, "Deep residual
+learning for image recognition", 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
+[20] P. Viola and M. J. Jones, "Robust real-time face
+detection", Int. J. Comput. Vision, vol. 57, no. 2, pp.
+137-154, May 2004
+
