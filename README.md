@@ -157,3 +157,347 @@ learning for image recognition", 2016 IEEE Conference on Computer Vision and Pat
 detection", Int. J. Comput. Vision, vol. 57, no. 2, pp.
 137-154, May 2004
 
+
+
+<h1>Detailed Analysis </h1>
+Table of Contents
+
+
+S.No	Particulars	Page No
+1	Introduction	1-4
+2	Requirements, feasibility and scope	5
+3	Analysis, Activity time Schedule	6
+4	Design	7
+5	Implementation and testing	8-9
+6	Limitations and future scope for Project	10
+7	Conclusion	11
+8	References	12
+
+Introduction
+
+Deep Learning
+ Deep is an immensely increasing subset of Machine Learning, which tries to mimic the multiple parts of the human brain that sends signals to recognize stuff or making a conclusion based on sensor data, whereas in deep learning the models are trained to perform a specific task in certain way based on the models including multiple different layers working over different logical units on human brain over mathematical computation. A neural network takes in inputs, which are then processed in hidden layers using weights that are adjusted during training. Then the model spits out a prediction.
+
+
+
+
+
+
+A single layer without any activation function is considered nothing more than a linear model of Machine Learning Algorithms, these activation are introduced to add more irregularity to input values for making it as far as possible from the Linear Models for better learning processes
+Convolution Neural Network
+
+A Convolutional Neural Network is a Deep Learning algorithm which can take in an input image, assign multiple learnable weights and biases to various aspects of the image and be able to differentiate one from the other after passing through multiple layers to output either the class of the image to reduce the input complexity for the model based on edge detection made through multiple ConvLayers of the model done through the matrix multiplication.
+
+Working mechanism for CNN.
+
+
+Application of CNN
+
+1. Object Detection
+The face detection technique used here is MTCNN
+(Multi-task Cascaded Convolutional Networks). Face
+detection and alignment in unconstrained environment
+are challenging due to various poses, illuminations and
+occlusions. Recent studies show that deep learning
+approaches can achieve impressive performance on
+these two tasks. In this paper, we have used a Deep
+Cascaded multi-task framework which exploits the
+inherent correlation between detection and alignment to
+boost up their performance. In particular, this framework
+leverages a cascaded architecture with three
+stages of carefully designed Deep Convolutional Neural
+Networks to predict face and landmark location in a
+coarse-to-fine manner. In addition, it proposes a new
+online hard sample mining strategy that further
+improves the performance in practice. This method
+achieves superior accuracy over the state-of-the-art
+techniques on the challenging FDBB (Face Detection
+Data Set and Benchmark) and Wider Face benchmarks
+for face detection, and AFLW (Annotated Facial
+Landmarks in the Wild) benchmark for face alignment,
+while keeps real time performance.
+
+Here we tried face detection using two networks :
+
+1)Haar Cascade : First published by Paul Viola and Michael Jones in their 2001 paper, Rapid Object Detection using a Boosted Cascade of Simple Features, this original work has become one of the most cited papers in computer vision literature.
+
+●In their paper, Viola and Jones propose an algorithm that is capable of detecting objects in images, regardless of their location and scale in an image. Furthermore, this algorithm can run in real-time, making it possible to detect objects in video streams.
+
+●Specifically, Viola and Jones focus on detecting faces in images. Still, the framework can be used to train detectors for arbitrary “objects,” such as cars, buildings, kitchen utensils, and even bananas.
+
+●While the Viola-Jones framework certainly opened the door to object detection, it is now far surpassed by other methods, such as using Histogram of Oriented Gradients (HOG) + Linear SVM and deep learning. We need to respect this algorithm and at least have a high-level understanding of what’s going on underneath the hood.
+
+●Though , this technique worked quite well but we face a major issue while testing it in realtime on unseen data . It was predicting multiple bounding box for a single face because internally it dont use non max suppression .
+
+●The second major problem we faced was that it was utilizing max CPU , thus giving around 2 frames per second which can’t be considered for real time inference.
+
+
+
+
+2)MTCNN : one of the more popular approaches is called the “Multi-Task Cascaded Convolutional Neural Network,” or MTCNN for short, described by Kaipeng Zhang, et al. in the 2016 paper titled “Joint Face Detection and Alignment Using Multitask Cascaded Convolutional Networks.”
+
+●The MTCNN is popular because it achieved state-of-the-art results on a range of benchmark datasets, and because it is capable of also recognizing other facial features such as eyes and mouth, called landmark detection.
+
+●The network uses a cascade structure with three networks; first the image is rescaled to a range of different sizes (called an image pyramid), then the first model (Proposal Network or P-Net) proposes candidate facial regions, the second model (Refine Network or R-Net) filters the bounding boxes, and the third model (Output Network or O-Net) 
+
+●This network worked best in this case . It uses non max suppression behind the scenes and this predicts the most accurate bounding box.
+
+●It gave 7 fps on CPU inference and using this did not make the cpu reach its bottleneck.
+
+
+
+Visual representation of three architectures that are stack on top of each other to form MTCNN :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Samples of face detection using MTCNN :
+
+
+
+Multiple face detection using MTCNN:
+
+
+
+
+
+
+
+
+
+
+
+2. Image Classification
+Image classification refers to extracting specific
+desired features from a static or a real time image and
+classifying it to solve a specific problem at hand. This objective was accomplished by using transfer learning approach. ResNet-50 pre-trained model was used as a feature extractor connected with a custom fully connected layer for robust and efficient image
+classification. The model was trained on a dataset
+consisting three classes, masked, not masked, not
+properly masked respectively. The problem with the
+dataset was that it didn't represent the same amount
+of each class i.e. it was an imbalance of data, so the
+model was trained on two datasets combined. To
+achieve more robust results, custom image augmentation
+techniques were implemented during the training
+process. The convolutional layers of ResNet-50 were
+used as feature extractor (last convolutional layers),
+rest all were frozen during training. Thus, fine tuning
+the model gave much better results from traditional
+state-of-the-art architectures. It also helped in tackling
+vanishing gradients problem by leveraging the use of
+skip connections and strong robust feature extractor
+proved to be efficient enough to extract features from a
+relatively small dataset. ResNet-50 layers were
+connected to linear layers before end-to-end result
+prediction.
+
+Image classification category used in this project is multiclass cklassification where the output was ann array of three numbers represnenting the probability of each class .
+
+The classes were :
+Class 0 : Not masked
+Class 1 : Masked
+Class 2 : Incorrectly masked
+Here we also tried two approaches :
+
+1)State of the art  : We built our own neural network architecture in pytorch .
+Due to the imbalanced small dataset and current gpu capacity , this model was did not performed as well as pretrained models . Pretrained models are trained on millions and billions of parameters thus they are more robust .Though it was able to achieve a validation accuracy of ~97 percent.
+
+State of the art model architecture :
+
+
+from torch import nn
+import torch.nn.functional as F
+class state(nn.Module):
+    def __init__(self):
+        super(state , self).__init__()
+            
+        self.cnn1 = nn.Conv2d(in_channels=3 , out_channels=8 , kernel_size = 3 , stride = 1 , padding  = 1)
+        self.batchnorm1 = nn.BatchNorm2d(8)
+        self.relu = nn.ReLU()
+        self.maxpool1 = nn.MaxPool2d(kernel_size=2)
+        self.cnn2 = nn.Conv2d(in_channels=8 , out_channels=16 , kernel_size=3 , stride = 1 , padding = 1)
+        self.batchnorm2 = nn.BatchNorm2d(16)
+        self.maxpool2 = nn.MaxPool2d(kernel_size=2)
+        self.fc1 = nn.Linear(in_features=16*56*56 , out_features=4000)
+        self.dropout = nn.Dropout(0.55)
+        self.fc2 = nn.Linear(in_features=4000 , out_features=2000)
+        self.dropout = nn.Dropout(0.55)
+        self.fc3 = nn.Linear(in_features=2000 , out_features=512)
+        self.dropout = nn.Dropout(0.45)
+        self.fc4 = nn.Linear(in_features=512 , out_features=2)
+        self.final_act = nn.LogSoftmax(dim=1)
+    def forward(self , x):
+        out = self.cnn1(x)
+        out = self.batchnorm1(out)
+        out = self.relu(out)
+        out = self.maxpool1(out)
+        out = self.cnn2(out)
+        out = self.batchnorm2(out)
+        out = self.relu(out)
+        out = self.maxpool2(out)
+      #  print(out.shape)
+        out = out.view(-1,16*56*56)
+        out = self.fc1(out)
+        out = self.relu(out)
+        out = self.dropout(out)
+        out = self.fc2(out)
+        out = self.relu(out)
+        out = self.dropout(out)
+        out = self.fc3(out)
+        out = self.relu(out)
+        out = self.dropout(out)
+        out = self.fc4(out)
+        out = self.final_act(out)
+        return out
+
+
+
+2)Resnet-50 : This was the second approach we tried for an image classification task .
+This gave an accuracy of 98% thus outperforming the state of the art model . 
+ResNet-50 is a convolutional neural network that is 50 layers deep. You can load a pre-trained version of the network trained on more than a million images from the ImageNet database . The pretrained network can classify images into 1000 object categories, such as keyboard, mouse, pencil, and many animals. As a result, the network has learned rich feature representations for a wide range of images. The network has an image input size of 224-by-224.
+we also tried variants of resnet :
+Resnet-18 and resnet-34: the former consists of 18 layers and the latter has 34 layers . Having less layers with respect to imbalance and small data resulted in underfitting and inaccurate reaktime inference .
+Resnet-101 and resnet 152 : The former consist of 101 layers and the layer consists of 152 layers. The networks were too deep for a small dataset and we experienced a little gradient diminishing problem and at some time the models were stuck at local minima and the loss was not decreasing anymore .We got an outstanding accuracy on train data but it was surely overfilled as it performed worse of validation data / real time inference.
+
+Resnet-50 : This was the best architecture which was quite balanced and well suited for the dataset .It also tackled the gradient diminishing problem smoothly when compared to all its variants.
+
+
+
+Resnet-50 tackles the problem of diminishing gradients by using skip connections:
+The core idea is to backpropagate through the identity function, by just using a vector addition. Then the gradient would simply be multiplied by one and its value will be maintained in the earlier layers. This is the main idea behind Residual Networks (ResNets): they stack these skip residual blocks together. We use an identity function to preserve the gradient.
+
+
+Implementation of Resnet-50  architecture :
+
+# Loading the pre-trained ResNet-50 model for image classification on cropped images
+model = models.resnet50(pretrained=True)
+for layer, param in model.named_parameters():
+    print(layer)
+    if 'layer4' not in layer:
+# setting requires grad = False, as we do not want to backpropagate and change the weights and gradients,
+# we will freeze this layer for feature extraction and connect it to our fully connected trainable layers
+        param.requires_grad = False 
+# Adding our fully connected layer to the pre-trained ResNet-50 block
+model.fc = torch.nn.Sequential(torch.nn.Linear(2048, 512),
+                               torch.nn.ReLU(),
+                               torch.nn.Dropout(0.2),
+                               torch.nn.Linear(512, 3),
+                               torch.nn.LogSoftmax(dim=1))
+
+
+Here all the layers are pre trained so they are freezed , that means they will not be trained during the training process and will be used just for feature extraction and the layers below layer 4 (last convolutional  layer of resnet 50 ) will be trained . In pytorch ,  setting requiredGrad as False will disable the gradient calculation , hence the weights will not be altered  So basically we are using resnet 50 weights and layers for feature extraction and combining with our own model of fully connected layer for desired probabilistic output .
+
+
+
+3.Head Pose Estimation : The main objective of this task is to find the relative orientation (and position) of the human’s head with respect to the camera.So, the head pose estimates can provide information on which direction the human head is facing. Despite the head pose estimation task may seem to be easily solved, achieving acceptable quality on it has become possible only with recent advances in Deep Learning.Challenging conditions like extreme pose, bad lighting, occlusions and other faces in the frame make it difficult for data scientists to detect and estimate head poses.
+This task was done using OpenCV solvepnp function by giving the camera calibration parameters and facial keypoints as input . We require both 2D and 3D object points. The 2D object points are of (x,y) format and the 3D object points are of (x,y,z) type. For example, if OpenCV solvepnp is used for face estimation, we need 2D and 3D points for facial characteristics such as eyes, mouth, nose, and chin.
+For facial keypoints or face landmarks we used MTCNN in case of unmasked face , where we got 5 facial keypoints . In total we need six facial keypoints to predict the pose or face alignment , so we used another pretrained network known as face-alignment which uses DLib under the hood to predict a total of 64 facial keypoints . From that 64 key points we took one keypoint representing the lower part of the face and added it to the MTCNN key points array ,  thus we got 6 facial keypoints .
+In the case of the masked face  ,  the prediction was having large errors with respect to the ground truth as the face is hidden under the mask . So ,  it was the better option to predict as much less facial keypoints for the face as possible to avoid large summation of errors.S , in this case we used MTCNN as the main  keypoint predictor . Now, we got the 5 facial keypoints and left with a missing keypoint which represent the chin area .Here we used a small trick by calculating the midpoint using two key points on either side of the lips  and translating it down to negative x axis by some constant value .This is not the ideal solution but in case of masked faces it world quite well . There is much room for improvement but still we were able to predict pose on masked faces using only 5 key points up to some extent .
+
+
+Facial keypoints prediction :
+
+
+Head Pose estimation from facial keypoints :
+
+Requirements, feasibility and Scope
+
+Required Tools
+●Python
+●Pytorch API
+●OpenCV
+●Jupyter Notebook
+●Dlib
+
+Feasibility Study and Scope
+A real life solution that can be performed by computer vision can be face attention  and drowsiness detection . In this pandemic , it's difficult to perform such tasks while the person is wearing a mask . So we have to apply a two step process instead of one step process . The problem statement is that , we have to detect whether a person is attentive while driving or is he feeling drowsy , so a proper warning should be displayed to avoid any accidents. The main problem is that earlier various models have been made but they were made to work on unmasked faces . 
+
+So ,the approach should be as follows :
+There will be several models having their respective tasks :
+
+MODEL 1 :
+This model will be made for detecting the presence of faces and masks on the faces . This model has great importance as we have to detect the face otherwise all other components in the pipeline wont work and it will be beneficial to know which type of data i.e. in  which category the input frame lies .
+
+MODEL2 :
+The second model will have the responsibility of predicting the facial landmarks or keypoints. This model will be trained on a dataset having various key points of face . Instead of categorical loss , it will have a regression loss at the end as its a regression problem .Apart from previous face key points prediction models , this will generate 5 key points , as the traditional six points keypoints are difficult to perform on masked faces.
+
+MODEL 3:
+The third model will be used to predict the face alignment angle or face pose estimation for the key points obtained from the above model . This is the most challenging task as many techniques come into play such as camera calibration , 2-dimension to 3-dimension points conversion and 3d pose estimation.
+
+Implementation and Testing
+
+Implementation Modules
+
+I.Image Detection.py 
+Face detection is one of the important tasks of object detection. Typically detection is the first stage of pattern recognition and identity authentication. In recent years, deep learning-based algorithms in object detection have grown rapidly. These algorithms can be generally divided into two categories, i.e., two-stage detector like Faster R-CNN and one-stage detector like MTCNN. Although MTCNN and its varieties are not so good as two-stage detectors in terms of accuracy, they outperform the counterparts by a large margin in speed. MTCNN performs well when facing normal size objects, but is incapable of detecting small objects. The accuracy decreases notably when dealing with objects that have large-scale changing like faces. Aimed to solve the detection problem of varying face scales, we propose a face detector named MTCNN-face based on MTCNNv3 to improve the performance for face detection. The present approach includes using anchor boxes more appropriate for face detection and a more precise regression loss function. The improved detector significantly increased accuracy while remaining fast detection speed. Experiments on the WIDER FACE and the FDDB datasets show that our improved algorithm outperforms MTCNN and its varieties.
+
+
+II.Image Classification.py
+Image classification is a complex process that may be affected by many factors. Because classification results are the basis for many environmental and socioeconomic applications, scientists and practitioners have made great efforts in developing advanced classification approaches and techniques for improving classification accuracy. Image classification is used in a lot in basic fields like medicine, education and security. Correct classification has vital importance, especially in medicine. Therefore, improved methods are needed in this field. The proposed deep CNNs are an often-used architecture for deep learning and have been widely used in computer vision and audio recognition. In the literature, different values of factors used for the CNNs are considered. From the results of the experiments on the CIFAR dataset, we argue that the network depth is of the first priority for improving the accuracy. It can not only improve the accuracy, but also achieve the same high accuracy with less complexity compared to increasing the network width.
+
+
+Modules Interaction
+In order to classify a set of data into different classes or categories, the relationship between the data and the classes into which they are classified must be well understood. Generally, classification is done by a computer, so, to achieve classification by a computer, the computer must be trained. Sometimes it never gets sufficient accuracy with the results obtained, so training is a key to the success of classification. To improve the classification accuracy, inspired by the ImageNet challenge, the proposed work considers classification of multiple images into the different categories (classes) with more accuracy in classification, reduction in cost and in a shorter time by applying parallelism using a deep neural network model.
+
+The image classification problem requires determining the category (class) that an image belongs to. The problem is considerably complicated by the growth of categories' count, if several objects of different classes are present in the image and if the semantic class hierarchy is of interest, because an image can belong to several categories simultaneously. Fuzzy classes present another difficulty for probabilistic categories' assignment. Moreover, a combination of different classification approaches has shown to be helpful for the improvement of classification accuracy.
+In our case the classes will be masked or unmasked images of the detected images from the above module.
+
+
+Testing
+
+Phase 1 testing:
+In the initial stages each modules will be tested individually with different distribution of data to obtain the best analysis of testing TensorBoard will be integrated into the testing command, this will provide the best graphical representation so to obtain a detailed views over the faults into the working is either due to parameter or due to poor data optimization.
+
+This phase will allow us to measure the performance for individual models used into the play for project performance, once a certain performance is measured into individuals it be moved to phase 2 of testing.
+
+
+Phase 2 Testing:
+Under phase 2 of testing the final input data and output data is to be prepared to make a performance measure after the modules interaction with each other, this measurement will be supporting for fine interaction between the modules implemented and tested in phase 1, if this result out to be fine then final phase will be tested or models will be fine tuned or outputs will be engineered to build a better predictions through the model.
+
+Limitation and Future Scope.
+Limitations:
+
+I.Large amounts of approaches have been proposed for face detection. The early research on face detection mainly focused on the design of handcraft feature and used traditional machine learning algorithms to train effective classifiers for detection and recognition. Such approaches are limited in that the efficient feature design is complex and the detection accuracy is relatively low, but the model MTCNN model is better in performance but the time factor for detection depends upon the area covered and the number of face detected individually and then individually running over two steps:
+1. Detection for masked faces.
+2.Tracing Data points over the mask.
+Under multiple model processing it may sometimes takes high time if many peoples are to be detected over the camera for a while time.
+
+II.Datapoints detection could be erupted if two faces overlaps one another, in the image or if the camera angle is not good based on the data is trained over this could be due to different distribution encounter than the training dataset used for learning the model in different stages of the project.
+
+
+Future Scope
+There are number of aspects we are planning to work on shortly:
+1.Current the model takes .32nsec to obtain a prediction over the speed of CPU. So, we could optimize the data size adding transfer learning to optimize the complexity of input data to the model and obtain a prediction better than before
+2.The use of Machine Learning in the field of IOT device development is rising rapidly. Hence, we plan to port our model to their respective version of tensorflow lite.
+3.As the distribution of real data is not yet tested we are planning to build it over the web development for testing using model implementation over tensorflow javascript of the model.
+4.Future model improvement could be done using parameter tuning or replacing models with transfer learning.
+Conclusion
+The best model saved during training resulted in a
+validation loss of 0.9591 and validation accuracy of
+0.9689 which was used in testing in real-time. Also,
+the model resulted in 98% accuracy on the test data.
+
+
+
+
+Possible application areas where this Model can be deployed:
+1.Mall security checks
+2.Offices spaces
+3.Super market entrance
+4.Hospitals
+5.Schools and parks
+6.Mobile applications for alerts
