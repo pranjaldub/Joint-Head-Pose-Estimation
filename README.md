@@ -128,14 +128,14 @@ It is evident that one of our biggest obstacles during the COVID-19 pandemic is 
 
 
 S.No	Particulars	Page No
-1	Introduction	1-4
-2	Requirements, feasibility and scope	5
-3	Analysis, Activity time Schedule	6
-4	Design	7
-5	Implementation and testing	8-9
-6	Limitations and future scope for Project	10
-7	Conclusion	11
-8	References	12
+1	Introduction	1-4<br>
+2	Requirements, feasibility and scope	5<br>
+3	Analysis, Activity time Schedule	6<br>
+4	Design	7<br>
+5	Implementation and testing	8-9<br>
+6	Limitations and future scope for Project	10<br>
+7	Conclusion	11<br>
+8	References	12<br>
 
 <h2>Introduction</h2>
 
