@@ -4,17 +4,20 @@ Facial keypoints prediction and head pose estimation using MTCNN , Face-alignmen
 
 
 
-Abstract—Numerous Governing authorities/organizations expect people to utilize the services only if they wear masks, effectively masking both their nose and mouth, according to the rules from the World Health Organization (WHO). Manual screening and distinguishing proof of individuals following/not following this arrangement is an enormous assignment in public places.Keeping in mind these challenges, the ideal methodology is to utilize innovations in Artificial Intelligence and Deep Learning; to be utilized as to make this undertaking straightforward, which is anything but difficult to utilize and robotized. In this paper, we propose "DeepFaceMask", which is a high-precision and efficient face mask classifier. The presented DeepFaceMask is a one-stage identifier, which consists of a Deep Convolutional Neural Network (DCNN) to combine significant level semantic data with different element/feature maps. Other than this, we additionally investigate the chance of actualizing DeepFace-Mask with a light-weighted neural organization MobileNet for cell phones. MTCNN, utilizes the inalienable connection among's recognition and alignment to help boost their performance. Specifically, our frame work uses a cascaded architecture with three phases of diligently planned DCNN to predict the face and its key points or landmarks in a coarse-to-fine way.
+<h2>Abstract</h2>—Numerous Governing authorities/organizations expect people to utilize the services only if they wear masks, effectively masking both their nose and mouth, according to the rules from the World Health Organization (WHO). Manual screening and distinguishing proof of individuals following/not following this arrangement is an enormous assignment in public places.Keeping in mind these challenges, the ideal methodology is to utilize innovations in Artificial Intelligence and Deep Learning; to be utilized as to make this undertaking straightforward, which is anything but difficult to utilize and robotized. In this paper, we propose "DeepFaceMask", which is a high-precision and efficient face mask classifier. The presented DeepFaceMask is a one-stage identifier, which consists of a Deep Convolutional Neural Network (DCNN) to combine significant level semantic data with different element/feature maps. Other than this, we additionally investigate the chance of actualizing DeepFace-Mask with a light-weighted neural organization MobileNet for cell phones. MTCNN, utilizes the inalienable connection among's recognition and alignment to help boost their performance. Specifically, our frame work uses a cascaded architecture with three phases of diligently planned DCNN to predict the face and its key points or landmarks in a coarse-to-fine way.
 Keywords: Computer Vision, Face detection, Image Recognition, Image Classification, Object Detection and  Deep Learning Algorithm.
-I. INTRODUCTION (HEADING 1) 
+<br>
+<h2>I. INTRODUCTION (HEADING 1) </h2>
 To viably stop the spread of COVID-19 pandemic, everyone is required to wear a mask in public places.This nearly makes regular facial recognition techniques ineffective, for example, public access control, face access control, facial recognition, facial security checks at train stations, and so forth.. The science around the utilization of masks by the overall population to prevent COVID-19 transmission is progressing quickly. Policymakers need guidance on how masks should be utilized by everybody to battle the 
 recognition is to recognize a specific class of objects, for example face. Uses of object and face recognition can be found in numerous territories, for example, self driving vehicles,education,surveillance, etc. Customary object locators are based on handmade feature extractors. 
 
-II. PROBLEM STATEMENT 
+<h2>II. PROBLEM STATEMENT</h2> 
 The objective of this project is to prepare 'Object Detection Models' fit for distinguishing facial keypoints for 'Face Recognition' and 'Attention Detection' and the location of Masked and Unmasked faces in static as well as moving(video) images. The detection technique should be robust to the occlusion present in the images for better predictability Preferably, they should be sufficiently quick to function admirably for certifiable programs would like to zero in on in our future executions. 
-III. VISION 
+<br>
+<h2>III. VISION </h2>
 This undertaking was made with the vision of building up a "Real-Time Mask Detection System'' accessible for public use, to help general wellbeing authorities and little to huge foundations everywhere on the world viably battle this COVID19 pandemic. We trust that the models created here by the little exploration AI/ML people group empower engineers around the planet to have the option to utilize and convey the equivalent to construct systems that would be fit for withstanding the requests of a real-time, real-world use case. Specifically, it would assist manufacturing plants with guaranteeing mask consistence is followed, help guarantee security for guests in control zones or public spots where it is vital for such measures to be taken, etc. The applications are endless and are of earnest need in this crucial time. 
-IV. DATASETS 
+<br>
+<h2>IV. DATASETS </h2>
 COVID-19 pandemic. Furthermore, masks should be worn effectively on the face with the end goal that it masks the 
 The dataset we will be using primarily is the MaskPascalVOC zip file taken from the website: 
 nose and mouth totally, which is frequently not being followed. Consequently, it is dire to improve the recognition capabilities of the current face/mask recognition technology. Face mask identification alludes to distinguish if an individual is using mask and amount of area covered, which 
@@ -30,7 +33,7 @@ loss metric for our final model as it performed better in real-time comparativel
 
 
 
-V. RELATED WORK 
+<h2>V. RELATED WORK</h2> 
 A. OBJECT DETECTION 
 The face detection technique used here is MTCNN (Multi-task Cascaded Convolutional Networks). Humanface classification and arrangement in unconstrained climate Ongoing investigations show that profound learning approaches can accomplish great execution on these two errands. In this paper, we have utilized a Deep Cascaded perform various tasks system which abuses the inalienable relationship among discovery and arrangement to help up their exhibition. Specifically, this casing work uses a fell engineering with three phases of painstakingly planned Deep Convolutional Neural Networks to anticipate face and milestone area in a coarse-to-fine way. What's more, it proposes another online hard example mining technique that further improves the presentation practically speaking.. 
 
@@ -93,7 +96,8 @@ corner of mouth , left eye , right eye.
 OpenCV solvePnP 
 The capacity solvePnP and solvePnPRansac can be utilized to gauge pose. 
 solvePnP actualizes a few calculations for pose estimation which can be chosen utilizing the boundary flag. As a matter of course it utilizes the check solve pnp iteration to true and its basically distributed ledger technology arrangement trailed by LM algorithm. Solve pnp p3p function utilizes just three focuses ascertaining the alignment and it must be utilized just when utilizing solve pnp pransac. 
-VI. TRAINING 
+<br>
+<h2>VI. TRAINING </h2>
 After preprocessing the data, our combined dataset consists a total number of 4198 images. Number of images labelled 1 i.e. wearing mask correctly are
 3232, number of images labelled 2 i.e. not wearing mask are 717, number of images labelled 3 i.e. Wearing a mask incorrectly is 249. 
 The dataset was then divided into training data, 	validation data and test data. It was split into 	8:1:1 ratio i.e. train set size is 3358, 	validation set size is 419 and test set size is 	421. The difference in the validation and test size, despite the same ratio, is because test set size was calculated after calculating the train set size and validation set size and their summation was subtracted from the total number of images. Also, images were randomly shuffled for no imbalance of class and robust performance of model, in batch size of 64 for faster computation. We trained the model using cross-entropy loss and Adam 
@@ -102,20 +106,21 @@ Challenges faced during the training process was that single data source wasn’
 balanced, sufficiently large dataset was created that would provide enough data for the model to adapt to variances in data. GPU was used in training the model due to the large data. Training on GPU proved to be about 3x times faster than training on the CPU. GPU model used while training: NVIDIA GeForce GTX 1050 2GB GDDR5. Lighting and camera settings play a major role in model performance. Thus, we used MTCNN, which easily tackles such problems. Total params: 24,558,146 
 Trainable params: 16,014,850 
 Non-trainable params: 8,543,296 
-VII. RESULTS 
+<br>
+<h2>VII. RESULTS</h2> 
 The best model saved during training resulted in a validation loss of 0.9591 and validation accuracy of 0.9689 which was 
 
 
 
-VIII. REAL-TIME APPLICATIONS: 
+<h2>VIII. REAL-TIME APPLICATIONS:</h2> 
 • Mall security checks / Super markets • Offices spaces / Schools 
 • Hospitals 
 • Mobile applications for alerts 
 
-IX. FURTHER IMPLEMENTATIONS
+<h2>IX. FURTHER IMPLEMENTATIONS</h2>
 It is evident that one of our biggest obstacles during the COVID-19 pandemic is to make sure people follow the safety regulations especially in public places for his/her own safety and the safety of others around. Our DeepFaceMask model will thus detect if people are wearing masks or not, correctly, when deployed to the CCTVs in the public places and can alert the admin as and when people are not wearing masks or wearing masks incorrectly. Additionally, it can be used in head pose estimation, attention detection in classrooms and lectures on masked faces, drowsiness detection on masked faces using facial keypoints tracking the driver’s eyes, and so on. 
 
-X. REFERENCES  
+<h2>X. REFERENCES</h2>  
 [1] P. Viola and M. J. Jones, "Robust real-time face detection", Int. J. Comput. Vision, vol. 57, no. 2, pp. 137-154, May 2004. 
 [2] Z. A. Memish, A. I. Zumla, R. F. Al-Hakeem, A. A. Al-Rabeeah, and G. M. Stephens, “Family cluster of middle east respiratory syndrome coronavirus infections,” New England Journal of Medicine, vol. 368, no. 26, pp. 2487–2494, 2013. 
 [3] T.-Y. Lin, P. Goyal, R. Girshick, K. He, and P. Dollár, “Focal loss for dense object detection,” 2017.
